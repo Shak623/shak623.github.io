@@ -7,7 +7,9 @@ d3.select("#chi_t1").append("svg")
     .attr("class", "chi-t1")
     .attr("id", "chi-t1");
 
-var force = d3.layout.force()
+var svg_chi_t1 = d3.select("#chi-t1");
+
+var force_chi_t1 = d3.layout.force()
     .size([width, height]);
 
 d3.select("#chi_t1")
@@ -15,7 +17,9 @@ d3.select("#chi_t1")
   .attr("id", "tooltip-chi-t1")
 	.attr("class", "tooltip-chi-t1")
     .style("opacity", 0);
-    
+
+var tooltip_chi_t1 = d3.select("#tooltip-chi-t1");    
+
 d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links) {
   if (error) throw error;
 
@@ -98,56 +102,56 @@ d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links)
   var nodes = d3.values(nodesByName);
 
   // Create the link lines.
-  var link = d3.select("#chi-t1").selectAll(".link-chi-t1")
+  var link = svg_chi_t1.selectAll(".link-chi-t1")
       .data(rels)
       .enter().append("line")
         .attr("class", "link-chi-t1")
         .on('mouseover.tooltip', function(d) {
-          d3.select("#tooltip-chi-t1").transition()
+          tooltip_chi_t1.transition()
             .duration(300)
             .style("opacity", .8);
-          d3.select("#tooltip-chi-t1").html("Source: "+ d.source.name + 
+          tooltip_chi_t1.html("Source: "+ d.source.name + 
                       "<p/>Target: " + d.target.name + 
                       "<p/>Closeness: " + d.closeness)
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY + 10) + "px");
         })
         .on("mouseout.tooltip", function() {
-          d3.select("#tooltip-chi-t1").transition()
+          tooltip_chi_t1.transition()
             .duration(100)
             .style("opacity", 0);
         })
         .on('mouseout.fade', fade(1))
         .on("mousemove", function() {
-          d3.select("#tooltip-chi-t1").style("left", (d3.event.pageX) + "px")
+          tooltip_chi_t1.style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY + 10) + "px");
         });
         ;
 
   // Create the node circles.
-  var node = d3.select("#chi-t1").selectAll(".node-chi-t1")
+  var node = svg_chi_t1.selectAll(".node-chi-t1")
       .data(nodes)
       .enter().append("circle")
         .attr("class", "node-chi-t1")
         .attr("r", 4.5)
-        .call(force.drag)
+        .call(force_chi_t1.drag)
         .on('mouseover.tooltip', function(d) {
-          d3.select("#tooltip-chi-t1").transition()
+          tooltip_chi_t1.transition()
             .duration(300)
             .style("opacity", .8);
-          d3.select("#tooltip-chi-t1").html("ID:" + d.name)
+          tooltip_chi_t1.html("ID:" + d.name)
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY + 10) + "px");
         })
         .on('mouseover.fade', fade(0.1))
         .on("mouseout.tooltip", function() {
-          d3.select("#tooltip-chi-t1").transition()
+          tooltip_chi_t1.transition()
             .duration(100)
             .style("opacity", 0);
         })
         .on('mouseout.fade', fade(1))
         .on("mousemove", function() {
-          d3.select("#tooltip-chi-t1").style("left", (d3.event.pageX) + "px")
+          tooltip_chi_t1.style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY + 10) + "px");
         })
       
@@ -158,7 +162,7 @@ d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links)
         .text(d => d.name);
 
   // Start the force layout.
-  force
+  force_chi_t1
       .nodes(nodes)
       .links(rels)
       .on("tick", tick)
