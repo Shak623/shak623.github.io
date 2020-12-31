@@ -1,5 +1,5 @@
-var width = 1000,
-    height = 1000;
+var width = 500,
+    height = 500;
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -13,7 +13,7 @@ var tooltip = d3.select("body")
 	.attr("class", "tooltip")
     .style("opacity", 0);
     
-d3.csv("data/CHI_T1_SNA_deidentified.csv", function(error, links) {
+d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links) {
   if (error) throw error;
 
   var nodesByName = {};
