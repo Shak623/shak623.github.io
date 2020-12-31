@@ -13,7 +13,16 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="https://d3js.org/d3.v3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
-		<script src="assets/js/jquery.min.js"></script>  
+		<script src="assets/js/jquery.min.js"></script>
+		<script>
+			$(function () {
+				var includes = $('[data-include]')
+				$.each(includes, function () {
+					var file = 'graphs/' + $(this).data('include') + '.html';
+					$(this).load(file);
+				});
+			});
+		</script> 
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -58,14 +67,8 @@
 							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
 							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-							<div id="chi_t1"></div>
-							<script>
-								$(document).ready(function(){
-								
-								$('#chi_t1').load("graphs/Chicago/CHI_T1.html");
-						
-								});
-							</script>
+							<div id="chi_t1" data-include="Chicago/CHI_T1"></div>
+							<div id="chi_t3" data-include="Chicago/CHI_T3"></div>
 							<p>This is a test</p>
 						</div>
 					</div>
@@ -113,11 +116,10 @@
 
 			</div>
 
-		<!-- Scripts -->
+		<!-- Scripts --> 
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>

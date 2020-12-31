@@ -1,16 +1,19 @@
 var width = 500,
     height = 500;
 
-var svg = d3.select("#chi_t1").append("svg")
+d3.select("#chi_t1").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("class", "chi-t1")
+    .attr("id", "chi-t1");
 
 var force = d3.layout.force()
     .size([width, height]);
 
-var tooltip = d3.select("body")
-	.append("div")
-	.attr("class", "tooltip")
+d3.select("#chi_t1")
+  .append("div")
+  .attr("id", "tooltip-chi-t1")
+	.attr("class", "tooltip-chi-t1")
     .style("opacity", 0);
     
 d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links) {
@@ -95,58 +98,58 @@ d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links)
   var nodes = d3.values(nodesByName);
 
   // Create the link lines.
-  var link = svg.selectAll(".link")
+  var link = d3.select("#chi-t1").selectAll(".link-chi-t1")
       .data(rels)
-    .enter().append("line")
-      .attr("class", "link")
-      .on('mouseover.tooltip', function(d) {
-      	tooltip.transition()
-        	.duration(300)
-        	.style("opacity", .8);
-      	tooltip.html("Source: "+ d.source.name + 
-                     "<p/>Target: " + d.target.name + 
-                     "<p/>Closeness: " + d.closeness)
-        	.style("left", (d3.event.pageX) + "px")
-        	.style("top", (d3.event.pageY + 10) + "px");
-    	})
-    	.on("mouseout.tooltip", function() {
-	      tooltip.transition()
-	        .duration(100)
-	        .style("opacity", 0);
-	    })
-  		.on('mouseout.fade', fade(1))
-	    .on("mousemove", function() {
-	      tooltip.style("left", (d3.event.pageX) + "px")
-	        .style("top", (d3.event.pageY + 10) + "px");
-      });
-      ;
+      .enter().append("line")
+        .attr("class", "link-chi-t1")
+        .on('mouseover.tooltip', function(d) {
+          d3.select("#tooltip-chi-t1").transition()
+            .duration(300)
+            .style("opacity", .8);
+          d3.select("#tooltip-chi-t1").html("Source: "+ d.source.name + 
+                      "<p/>Target: " + d.target.name + 
+                      "<p/>Closeness: " + d.closeness)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        })
+        .on("mouseout.tooltip", function() {
+          d3.select("#tooltip-chi-t1").transition()
+            .duration(100)
+            .style("opacity", 0);
+        })
+        .on('mouseout.fade', fade(1))
+        .on("mousemove", function() {
+          d3.select("#tooltip-chi-t1").style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        });
+        ;
 
   // Create the node circles.
-  var node = svg.selectAll(".node")
+  var node = d3.select("#chi-t1").selectAll(".node-chi-t1")
       .data(nodes)
-    .enter().append("circle")
-      .attr("class", "node")
-      .attr("r", 4.5)
-      .call(force.drag)
-      .on('mouseover.tooltip', function(d) {
-        tooltip.transition()
-          .duration(300)
-          .style("opacity", .8);
-        tooltip.html("ID:" + d.name)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY + 10) + "px");
-      })
-      .on('mouseover.fade', fade(0.1))
-      .on("mouseout.tooltip", function() {
-        tooltip.transition()
-          .duration(100)
-          .style("opacity", 0);
-      })
-      .on('mouseout.fade', fade(1))
-      .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY + 10) + "px");
-      })
+      .enter().append("circle")
+        .attr("class", "node-chi-t1")
+        .attr("r", 4.5)
+        .call(force.drag)
+        .on('mouseover.tooltip', function(d) {
+          d3.select("#tooltip-chi-t1").transition()
+            .duration(300)
+            .style("opacity", .8);
+          d3.select("#tooltip-chi-t1").html("ID:" + d.name)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        })
+        .on('mouseover.fade', fade(0.1))
+        .on("mouseout.tooltip", function() {
+          d3.select("#tooltip-chi-t1").transition()
+            .duration(100)
+            .style("opacity", 0);
+        })
+        .on('mouseout.fade', fade(1))
+        .on("mousemove", function() {
+          d3.select("#tooltip-chi-t1").style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 10) + "px");
+        })
       
       
     node.append('text')
