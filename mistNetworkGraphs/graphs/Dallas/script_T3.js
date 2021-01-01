@@ -1,19 +1,26 @@
-var width = 1000,
-    height = 1000;
+var width = 500,
+    height = 500;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+d3.select("#dallas_t3").append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .attr("id", "dal-t3")
+  .attr("class", "dal-t3");
 
-var force = d3.layout.force()
+var svg_dal_t3 = d3.select("#dal-t3");
+
+var force_dal_t3 = d3.layout.force()
     .size([width, height]);
 
-var tooltip = d3.select("body")
-	.append("div")
-	.attr("class", "tooltip")
+d3.select("#dallas_t3")
+  .append("div")
+  .attr("id", "tooltip-dal-t3")
+  .attr("class", "tooltip-dal-t3")
     .style("opacity", 0);
+
+var tooltip_dal_t3 = d3.select("#tooltip-dal-t3");
     
-d3.csv("data/Dallas_T3_SNA_deidentified.csv", function(error, links) {
+d3.csv("graphs/Dallas/data/Dallas_T3_SNA_deidentified.csv", function(error, links) {
   if (error) throw error;
 
   var nodesByName = {};
@@ -95,56 +102,56 @@ d3.csv("data/Dallas_T3_SNA_deidentified.csv", function(error, links) {
   var nodes = d3.values(nodesByName);
 
   // Create the link lines.
-  var link = svg.selectAll(".link")
+  var link = svg_dal_t3.selectAll(".link-dal-t3")
       .data(rels)
     .enter().append("line")
-      .attr("class", "link")
+      .attr("class", "link-dal-t3")
       .on('mouseover.tooltip', function(d) {
-      	tooltip.transition()
+      	tooltip_dal_t3.transition()
         	.duration(300)
         	.style("opacity", .8);
-      	tooltip.html("Source: "+ d.source.name + 
+      	tooltip_dal_t3.html("Source: "+ d.source.name + 
                      "<p/>Target: " + d.target.name + 
                      "<p/>Closeness: " + d.closeness)
         	.style("left", (d3.event.pageX) + "px")
         	.style("top", (d3.event.pageY + 10) + "px");
     	})
     	.on("mouseout.tooltip", function() {
-	      tooltip.transition()
+	      tooltip_dal_t3.transition()
 	        .duration(100)
 	        .style("opacity", 0);
 	    })
   		.on('mouseout.fade', fade(1))
 	    .on("mousemove", function() {
-	      tooltip.style("left", (d3.event.pageX) + "px")
+	      tooltip_dal_t3.style("left", (d3.event.pageX) + "px")
 	        .style("top", (d3.event.pageY + 10) + "px");
       });
       ;
 
   // Create the node circles.
-  var node = svg.selectAll(".node")
+  var node = svg_dal_t3.selectAll(".node-dal-t3")
       .data(nodes)
     .enter().append("circle")
-      .attr("class", "node")
+      .attr("class", "node-dal-t3")
       .attr("r", 4.5)
-      .call(force.drag)
+      .call(force_dal_t3.drag)
       .on('mouseover.tooltip', function(d) {
-        tooltip.transition()
+        tooltip_dal_t3.transition()
           .duration(300)
           .style("opacity", .8);
-        tooltip.html("ID:" + d.name)
+        tooltip_dal_t3.html("ID:" + d.name)
           .style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY + 10) + "px");
       })
       .on('mouseover.fade', fade(0.1))
       .on("mouseout.tooltip", function() {
-        tooltip.transition()
+        tooltip_dal_t3.transition()
           .duration(100)
           .style("opacity", 0);
       })
       .on('mouseout.fade', fade(1))
       .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
+        tooltip_dal_t3.style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY + 10) + "px");
       })
       
@@ -155,7 +162,7 @@ d3.csv("data/Dallas_T3_SNA_deidentified.csv", function(error, links) {
         .text(d => d.name);
 
   // Start the force layout.
-  force
+  force_dal_t3
       .nodes(nodes)
       .links(rels)
       .on("tick", tick)
