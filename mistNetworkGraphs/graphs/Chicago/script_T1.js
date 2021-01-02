@@ -18,7 +18,7 @@ d3.select("#chi_t1")
 	.attr("class", "tooltip-chi-t1")
     .style("opacity", 0);
 
-var tooltip_chi_t1 = d3.select("#tooltip-chi-t1");    
+var tooltip_chi_t1 = d3.select("#tooltip-chi-t1");
 
 d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links) {
   if (error) throw error;
@@ -104,56 +104,56 @@ d3.csv("graphs/Chicago/data/CHI_T1_SNA_deidentified.csv", function(error, links)
   // Create the link lines.
   var link = svg_chi_t1.selectAll(".link-chi-t1")
       .data(rels)
-      .enter().append("line")
-        .attr("class", "link-chi-t1")
-        .on('mouseover.tooltip', function(d) {
-          tooltip_chi_t1.transition()
-            .duration(300)
-            .style("opacity", .8);
-          tooltip_chi_t1.html("Source: "+ d.source.name + 
-                      "<p/>Target: " + d.target.name + 
-                      "<p/>Closeness: " + d.closeness)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
-        })
-        .on("mouseout.tooltip", function() {
-          tooltip_chi_t1.transition()
-            .duration(100)
-            .style("opacity", 0);
-        })
-        .on('mouseout.fade', fade(1))
-        .on("mousemove", function() {
-          tooltip_chi_t1.style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
-        });
-        ;
+    .enter().append("line")
+      .attr("class", "link-chi-t1")
+      .on('mouseover.tooltip', function(d) {
+        tooltip_chi_t1.transition()
+          .duration(300)
+          .style("opacity", .8);
+        tooltip_chi_t1.html("Source: "+ d.source.name + 
+                    "<p/>Target: " + d.target.name + 
+                    "<p/>Closeness: " + d.closeness)
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
+      })
+      .on("mouseout.tooltip", function() {
+        tooltip_chi_t1.transition()
+          .duration(100)
+          .style("opacity", 0);
+      })
+      .on('mouseout.fade', fade(1))
+      .on("mousemove", function() {
+        tooltip_chi_t1.style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
+      });
+      ;
 
   // Create the node circles.
   var node = svg_chi_t1.selectAll(".node-chi-t1")
       .data(nodes)
-      .enter().append("circle")
-        .attr("class", "node-chi-t1")
-        .attr("r", 4.5)
-        .call(force_chi_t1.drag)
-        .on('mouseover.tooltip', function(d) {
-          tooltip_chi_t1.transition()
-            .duration(300)
-            .style("opacity", .8);
-          tooltip_chi_t1.html("ID:" + d.name)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
-        })
-        .on('mouseover.fade', fade(0.1))
-        .on("mouseout.tooltip", function() {
-          tooltip_chi_t1.transition()
-            .duration(100)
-            .style("opacity", 0);
-        })
-        .on('mouseout.fade', fade(1))
-        .on("mousemove", function() {
-          tooltip_chi_t1.style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
-        })
+    .enter().append("circle")
+      .attr("class", "node-chi-t1")
+      .attr("r", 4.5)
+      .call(force_chi_t1.drag)
+      .on('mouseover.tooltip', function(d) {
+        tooltip_chi_t1.transition()
+          .duration(300)
+          .style("opacity", .8);
+        tooltip_chi_t1.html("ID:" + d.name)
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
+      })
+      .on('mouseover.fade', fade(0.1))
+      .on("mouseout.tooltip", function() {
+        tooltip_chi_t1.transition()
+          .duration(100)
+          .style("opacity", 0);
+      })
+      .on('mouseout.fade', fade(1))
+      .on("mousemove", function() {
+        tooltip_chi_t1.style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
+      })
       
       
     node.append('text')
