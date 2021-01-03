@@ -1,19 +1,26 @@
-var width = 1000,
-    height = 1000;
+var width = 750,
+    height = 750;
 
-var svg = d3.select("body").append("svg")
+d3.select("#ny_t1").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("class", "ny-t1")
+    .attr("id", "ny-t1");
 
-var force = d3.layout.force()
+var svg_ny_t1 = d3.select("#ny-t1");
+
+var force_ny_t1 = d3.layout.force()
     .size([width, height]);
 
-var tooltip = d3.select("body")
-	.append("div")
-	.attr("class", "tooltip")
+d3.select("#ny_t1")
+  .append("div")
+  .attr("id", "tooltip-ny-t1")
+	.attr("class", "tooltip-ny-t1")
     .style("opacity", 0);
-    
-d3.csv("data/NY_T1_SNA_deidentified.csv", function(error, links) {
+
+var tooltip_ny_t1 = d3.select("#tooltip-ny-t1");
+
+d3.csv("graphs/NY/data/NY_T1_SNA_deidentified.csv", function(error, links) {
   if (error) throw error;
 
   var nodesByName = {};
@@ -95,56 +102,56 @@ d3.csv("data/NY_T1_SNA_deidentified.csv", function(error, links) {
   var nodes = d3.values(nodesByName);
 
   // Create the link lines.
-  var link = svg.selectAll(".link")
+  var link = svg_ny_t1.selectAll(".link-ny-t1")
       .data(rels)
     .enter().append("line")
-      .attr("class", "link")
+      .attr("class", "link-ny-t1")
       .on('mouseover.tooltip', function(d) {
-      	tooltip.transition()
-        	.duration(300)
-        	.style("opacity", .8);
-      	tooltip.html("Source: "+ d.source.name + 
-                     "<p/>Target: " + d.target.name + 
-                     "<p/>Closeness: " + d.closeness)
-        	.style("left", (d3.event.pageX) + "px")
-        	.style("top", (d3.event.pageY + 10) + "px");
-    	})
-    	.on("mouseout.tooltip", function() {
-	      tooltip.transition()
-	        .duration(100)
-	        .style("opacity", 0);
-	    })
-  		.on('mouseout.fade', fade(1))
-	    .on("mousemove", function() {
-	      tooltip.style("left", (d3.event.pageX) + "px")
-	        .style("top", (d3.event.pageY + 10) + "px");
-      });
-      ;
-
-  // Create the node circles.
-  var node = svg.selectAll(".node")
-      .data(nodes)
-    .enter().append("circle")
-      .attr("class", "node")
-      .attr("r", 4.5)
-      .call(force.drag)
-      .on('mouseover.tooltip', function(d) {
-        tooltip.transition()
+        tooltip_ny_t1.transition()
           .duration(300)
           .style("opacity", .8);
-        tooltip.html("ID:" + d.name)
+        tooltip_ny_t1.html("Source: "+ d.source.name + 
+                    "<p/>Target: " + d.target.name + 
+                    "<p/>Closeness: " + d.closeness)
           .style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY + 10) + "px");
       })
-      .on('mouseover.fade', fade(0.1))
       .on("mouseout.tooltip", function() {
-        tooltip.transition()
+        tooltip_ny_t1.transition()
           .duration(100)
           .style("opacity", 0);
       })
       .on('mouseout.fade', fade(1))
       .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
+        tooltip_ny_t1.style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
+      });
+      ;
+
+  // Create the node circles.
+  var node = svg_ny_t1.selectAll(".node-ny-t1")
+      .data(nodes)
+    .enter().append("circle")
+      .attr("class", "node-ny-t1")
+      .attr("r", 4.5)
+      .call(force_ny_t1.drag)
+      .on('mouseover.tooltip', function(d) {
+        tooltip_ny_t1.transition()
+          .duration(300)
+          .style("opacity", .8);
+        tooltip_ny_t1.html("ID:" + d.name)
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
+      })
+      .on('mouseover.fade', fade(0.1))
+      .on("mouseout.tooltip", function() {
+        tooltip_ny_t1.transition()
+          .duration(100)
+          .style("opacity", 0);
+      })
+      .on('mouseout.fade', fade(1))
+      .on("mousemove", function() {
+        tooltip_ny_t1.style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY + 10) + "px");
       })
       
@@ -155,7 +162,7 @@ d3.csv("data/NY_T1_SNA_deidentified.csv", function(error, links) {
         .text(d => d.name);
 
   // Start the force layout.
-  force
+  force_ny_t1
       .nodes(nodes)
       .links(rels)
       .on("tick", tick)

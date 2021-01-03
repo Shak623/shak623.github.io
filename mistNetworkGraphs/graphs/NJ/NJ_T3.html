@@ -1,37 +1,41 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<head>
+  <meta charset="utf-8">
+  <style>
 
-.link {
-	  stroke: #c1c1c1;
-    stroke-width: 2px;
-    pointer-events: all;
-	}
-
-.node circle {
-  pointer-events: all;
-  stroke: #777;
-  stroke-width: 1px;
-}
-
-
-div.tooltip {
-  position: absolute;
-  background-color: white;
-  max-width: 200px;
-  height: auto;
-  padding: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  border-width: 1px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
-  pointer-events: none;
-}
-
-</style>
+    .nj-t3 line.link-nj-t3 {
+        stroke: #c1c1c1;
+        stroke-width: 2px;
+        pointer-events: all;
+      }
+    
+    .nj-t3 circle.node-nj-t3 {
+      pointer-events: all;
+      stroke: rgb(0, 0, 0);
+      stroke-width: 1px;
+    }
+    
+    
+    div.tooltip-nj-t3 {
+      position: absolute;
+      background-color: white;
+      max-width: 200px;
+      height: auto;
+      padding: 1px;
+      border-style: solid;
+      border-radius: 4px;
+      border-width: 1px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+      pointer-events: none;
+    }
+    
+  </style>
+</head>
 <body>
   <!--Scripts-->
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
-    <script src="script_T3.js"></script>
+    <p>New Jersey After MIST</p>
+    <script>
+      var url = "graphs/NJ/script_T3.js"
+      $.getScript(url);
+    </script>
 </body>
