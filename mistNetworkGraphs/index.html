@@ -6,11 +6,23 @@
 -->
 <html>
 	<head>
-		<title>Phantom by HTML5 UP</title>
+		<title>Mist - Network Graphs</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script>
+			$(function () {
+				var includes = $('[data-include]')
+				$.each(includes, function () {
+					var file = 'graphs/' + $(this).data('include') + '.html';
+					$(this).load(file);
+				});
+			});
+		</script> 
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -21,8 +33,8 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+								<a href="../index.html" class="logo">
+									<span class="symbol"></span><span class="title">Shakeel Farooq</span>
 								</a>
 
 							<!-- Nav -->
@@ -39,161 +51,77 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="#chicago">Chicago</a></li>
+							<li><a href="#dallas">Dallas</a></li>
+							<li><a href="#dc">DC</a></li>
+							<li><a href="#new-jersey">New Jersey</a></li>
+							<li><a href="#new-york">New York</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<header>
-								<h1>This is Phantom, a free, fully responsive site<br />
-								template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
-								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
-							</header>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Magna</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Lorem</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Feugiat</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Tempus</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Aliquam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Veroeros</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic07.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ipsum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dolor</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Nullam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ultricies</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dictum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Pretium</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-							</section>
+							<h1>Mist Network Graphs</h1>
+							<p>
+								Mist is an interscholastic tournament where high school students collaborate and compete, develop creative skills, and learn from professionals, 
+								while educating them about Islam and Muslims. Their programming includes annual regional and national tournaments in more than a dozen regions across
+								North America.
+							</p>
+							<p>
+								I was tasked with taking data from people participating in MIST and showing their connections to their friends in an interactive graph. The graphs 
+								were generated using d3.js and they were taken from various states and citites within America. These include Chicago, Dallas, DC, New Jersey, and
+								New York.
+							</p>
+							<p>
+								The data was taken from two different time periods: before MIST and after MIST. The objective was to see if people would gain connections to friends
+								after MIST. However, the results of this were inconclusive. The interactive graphs are provided below:
+							</p>
+							<h1 id="chicago">Chicago</h1>
+							<div class="graphs">
+								<p>Before Mist</p>
+								<div id="chi_t1" data-include="Chicago/CHI_T1" class="graph"></div>
+								<p>After Mist</p>
+								<div id="chi_t3" data-include="Chicago/CHI_T3" class="graph"></div>
+							</div>
+
+							<h1 id="dallas">Dallas</h1>
+							<div class="graphs">
+								<p>Before Mist</p>
+								<div id="dallas_t1" data-include="Dallas/Dallas_T1" class="graph"></div>
+								<p>After Mist</p>
+								<div id="dallas_t3" data-include="Dallas/Dallas_T3" class="graph"></div>
+							</div>
+
+							<h1 id="dc">DC</h1>
+							<div class="graphs">
+								<p>Before Mist</p>
+								<div id="dc_t1" data-include="DC/DC_T1" class="graph"></div>
+								<p>After Mist</p>
+								<div id="dc_t3" data-include="DC/DC_T3" class="graph"></div>
+							</div>
+
+							<h1 id="new-jersey">New Jersey</h1>
+							<div class="graphs">
+								<p>Before Mist</p>
+								<div id="nj_t1" data-include="NJ/NJ_T1" class="graph"></div>
+								<p>After Mist</p>
+								<div id="nj_t3" data-include="NJ/NJ_T3" class="graph"></div>
+							</div>
+
+							<h1 id="new-york">New York</h1>
+							<div class="graphs">
+								<p>Before Mist</p>
+								<div id="ny_t1" data-include="NY/NY_T1" class="graph"></div>
+								<p>After Mist</p>
+								<div id="ny_t3" data-include="NY/NY_T3" class="graph"></div>
+							</div>
 						</div>
 					</div>
 
 				<!-- Footer -->
-					<footer id="footer">
+					<!-- <footer id="footer">
 						<div class="inner">
 							<section>
 								<h2>Get in touch</h2>
@@ -226,21 +154,20 @@
 									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
 									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
 								</ul>
-							</section>
+							</section> 
 							<ul class="copyright">
 								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
-					</footer>
+					</footer> -->
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
+		<!-- Scripts --> 
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script src="assets/js/slideshow.js"></script>
 	</body>
 </html>
