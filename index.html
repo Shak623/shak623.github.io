@@ -263,7 +263,7 @@
 						<h2>Say Hello.</h2>
 					</header>
 					<div class="box">
-						<form method="POST" action="https://formspree.io/f/xvovlvbg">
+						<form id="contact-form" method="POST" action="https://formspree.io/f/xvovlvbg" target="hidden_iframe" onsubmit="submitted=true;">
 							<div class="fields">
 								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
 								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
@@ -276,6 +276,8 @@
 								<li><input type="submit" value="Send Message" /></li>
 							</ul>
 						</form>
+
+						<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
 					</div>
 				</div>
 			</section>
@@ -299,6 +301,13 @@
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
+			<script type="text/javascript">var submitted=false;</script>
+			<script type="text/javascript">
+			$('#contact-form').on('submit', function(e) {
+			$('#contact-form *').fadeOut(2000);
+			$('#contact-form').prepend('Thank you for reaching out! I will get back to you within 24 hours.');
+			});
+			</script>
 			<script src="assets/js/jquery.poptrox.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
