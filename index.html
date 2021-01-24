@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -244,7 +245,7 @@
 
 		<!-- Contact -->
 			
-			<section id="contact" class="main style3 secondary">
+			<!--<section id="contact" class="main style3 secondary">
 				<div class="content">
 					<header>
 						<h2>Say Hello.</h2>
@@ -254,15 +255,15 @@
 						<a href="mailto:shak.farooq2@gmail.com" class="icon free fas fa-envelope grow"> Email Me</a>
 					</div>
 				</div>
-			</section>
+			</section> -->
 			
-			<!--<section id="contact" class="main style3 secondary">
+			<section id="contact" class="main style3 secondary">
 				<div class="content">
 					<header>
 						<h2>Say Hello.</h2>
 					</header>
 					<div class="box">
-						<form method="POST" action="assets/php/contactForm.php">
+						<form method="POST" action="https://formspree.io/f/xvovlvbg">
 							<div class="fields">
 								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
 								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
@@ -273,9 +274,14 @@
 								<li><input type="submit" value="Send Message" /></li>
 							</ul>
 						</form>
+						<form action="?" method="POST">
+							<div class="g-recaptcha" data-sitekey="6LfWrDoaAAAAADfv0vBigW5jVERDgQD0d5mDMAc5"></div>
+							<br/>
+							<input type="submit" value="Submit">
+						  </form>
 					</div>
 				</div>
-			</section> -->
+			</section>
 			
 
 		<!-- Footer -->
