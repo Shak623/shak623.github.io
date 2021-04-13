@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>CSCI-510: Assn 5 - Transformation</title>
+    
+    <!-- vertex Shader -->
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        #version 300 es
+        in vec4 aVertexPosition;
+        in vec3 bary;
+        
+        // Model transforms
+        uniform mat4 modelT;
+        
+        // view transform
+        uniform mat4 viewT;
+        
+        // projection tramsform
+        uniform mat4 projT;
+        
+        out vec3 vbc;
+
+        void main()
+        {
+            gl_Position = projT * viewT * modelT * aVertexPosition;
+            vbc = bary;
+        }
+    </script>
+
+     <!-- fragment Shader -->
+     <script id="fragment-shader" type="x-shader/x-fragment">
+         #version 300 es
+         precision mediump float;
+         
+         in vec3 vbc;
+
+         // Color that is the result of this shader
+         out vec4 fragColor;
+
+         void main(void) {
+             
+             fragColor = vec4 (0.5, 0.5, 0.5, 1.0 );
+           // if on the edge, draw black, otherwsie, draw grey
+           if (vbc.x < 0.02 || vbc.y < 0.02 || vbc.z < 0.02) {
+             fragColor = vec4 (1.0, 1.0, 1.0, 1.0);
+           }
+         }
+
+     </script>
+     
+     <!-- Matrix library and code for standard transformations -->
+     <script type="text/javascript" src="gl-matrix-min.js"></script>
+     
+     <!-- include the shape creation functions -->
+    <script type="text/javascript" src="./cgIShape.js"></script>
+    <script type="text/javascript" src="./teapot.js"></script>
+    
+    <!-- include the main tesselation functions -->
+    <script type="text/javascript" src="./transMain.js"></script>
+    
+  <script type="text/javascript">
+    // Call init once the webpage has loaded
+    window.onload = init;
+  </script>
+</head>
+
+<body>
+  <h1>CSCI-510: Assn 5 - Transformation</h1>
+  <p>
+    <canvas id="webgl-canvas" width="500" height="500">
+            Your browser does not support the HTML5 canvas element.
+    </canvas>
+</body>
+</html>
+
