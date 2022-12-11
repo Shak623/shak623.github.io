@@ -1969,6 +1969,11 @@ img {
   height: 100%;
   background: rgba(0, 2, 65, 0.5);
 }
+  .overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
 .post-item .post-inner {
   -webkit-transition: all 0.3s ease;
